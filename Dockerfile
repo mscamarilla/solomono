@@ -7,3 +7,5 @@ RUN apk update \
   && curl --silent --show-error https://getcomposer.org/installer | php \
   && mv composer.phar /usr/bin/composer \
   && rm -rf /tmp/*
+
+  WORKDIR /application

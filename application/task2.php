@@ -2,7 +2,7 @@
 $start_import = microtime(true);
 
 $filename = 'test.sql';
-$mysql_host = 'localhost';
+$mysql_host = 'db';
 $mysql_username = 'solomono';
 $mysql_password = 'VeryStrongPassword';
 $mysql_database = 'solomono2';

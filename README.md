@@ -1,6 +1,12 @@
 ### usage
 - copy all repo to your computer
-- run docker-compose up -d
+- run 
+  
+  `docker-compose up -d`
+  
+  `docker-compose exec php sh`
+  
+  `composer install`
 - go to localhost:8081
 - enjoy.
 
