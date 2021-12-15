@@ -1,0 +1,38 @@
+version: "3.7"
+services:
+  nginx:
+    image: nginx:latest
+    ports:
+      - "8081:80"
+    volumes:
+      - ./application:/application
+      - ./default.conf:/etc/nginx/conf.d/default.conf
+    networks:
+      - mynetwork
+  php:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - "9000:9000"
+    volumes:
+      - ./application:/application
+    networks:
+      - mynetwork
+  db:
+    image: mysql:5.7
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: VeryStrongPassword
+      MYSQL_DATABASE: solomono1
+      MYSQL_USER: solomono
+      MYSQL_PASSWORD: VeryStrongPassword
+    volumes:
+      - ./init:/docker-entrypoint-initdb.d
+    networks:
+      - mynetwork
+    ports:
+      - "3308:3306"
+networks:
+  mynetwork:
